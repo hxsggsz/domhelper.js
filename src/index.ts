@@ -1,51 +1,59 @@
-function select<T extends HTMLElement>(
-  html?: keyof HTMLElementTagNameMap,
-  SelectAllElements?: "one" | "all"
-) {
-  let classOrId: string | null;
-  const allElements = SelectAllElements === "all";
-  let element: NodeListOf<T> | T | null;
+type AllElementsTypes = "one" | "all";
+type ElementType<T extends HTMLElement> = NodeListOf<T> | T | null;
 
-  if (html) {
-    element = allElements
-      ? document.querySelectorAll<T>(html)
-      : document.querySelector<T>(html);
-    return element;
+class Select<T extends HTMLElement> {
+  private classOrId: string;
+  private valueToGet: string;
+  private allElements: AllElementsTypes;
+  private element: ElementType<T>;
+
+  constructor(
+    html?: keyof HTMLElementTagNameMap,
+    allElements?: AllElementsTypes
+  ) {
+    this.classOrId = "";
+    this.allElements = allElements ?? "one";
+    this.element =
+      allElements === "one"
+        ? document.querySelector<T>(html ?? "*")
+        : document.querySelectorAll<T>(html ?? "*");
+    this.valueToGet = "";
   }
 
-  const where = function (classOrId: "id" | "class") {
-    classOrId;
-    return { equals };
-  };
+  where(classOrId: "id" | "class"): this {
+    this.classOrId = classOrId;
+    return this;
+  }
 
-  const equals = function (
-    classOrIdValue: string,
-    allElements?: "one" | "all"
-  ) {
-    if (allElements) {
-      element = document.querySelectorAll<T>(
-        `${classOrId === "class" ? `.${classOrIdValue}` : `#${classOrIdValue}`}`
-      );
+  equals(valueToGet: string) {
+    this.valueToGet = valueToGet;
+    this.element = document.querySelector<T>(
+      `${this.classOrId === "class" ? `.${valueToGet}` : `#${valueToGet}`}`
+    );
 
-      return element;
-    } else {
-      element = document.querySelector<T>(
-        `${classOrId === "class" ? `.${classOrIdValue}` : `#${classOrIdValue}`}`
-      );
+    return this;
+  }
 
-      return element;
-    }
-    return { eventListener }; // fazer isso funcionar
-  };
+  all() {
+    this.allElements = "all";
+    this.element = document.querySelectorAll<T>(
+      `${
+        this.classOrId === "class"
+          ? `.${this.valueToGet}`
+          : `#${this.valueToGet}`
+      }`
+    );
 
-  const eventListener = function () {};
+    return this;
+  }
 
-  return { where };
+  getResult() {
+    console.log(this.element);
+    return this.element as T;
+  }
+
+  getResults() {
+    console.log(this.element);
+    return this.element as NodeListOf<T>;
+  }
 }
-
-const teste = select<HTMLDivElement>("div", "all");
-
-if (teste) {
-  teste.forEach((it) => (it.innerHTML = "adwadaw"));
-}
-console.log({ teste });
