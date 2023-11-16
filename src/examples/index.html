@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test-inline">test</div>
+    <div class="test-import">test</div>
+    <div class="test-multiple-elements">test</div>
+    <div class="test-multiple-elements">test</div>
+
+    <script>
+    const exports = {} // remove error on console
+    </script>
+    <script src="../../dist/domhelper.js"></script>
+    <script src="./imports.js" type="module"></script>
+    <script src="./multiples.js"></script>
+
+    <script>
+      const testID = new Select().where("id").equals("test-inline").getResult()
+
+      if(testID) {
+        testID.innerHTML = 'worked'
+      }
+    </script>
+  </body>
+</html>
