@@ -30,6 +30,12 @@ describe("new Select()", () => {
 
       expect(uniqueQuerySelectorMock).toHaveBeenCalled();
     });
+
+    test("calls the querySelector function when select a html", () => {
+      new Select<HTMLDivElement>("div").getResult();
+
+      expect(uniqueQuerySelectorMock).toHaveBeenCalled();
+    });
   });
 
   describe('when call "getAllResults()"', () => {
