@@ -16,7 +16,6 @@ jobs:
           version: latest
       - uses: actions/setup-node@v3
         with:
-          registry-url: "https://registry.npmjs.org/"
           node-version: 16.x
           cache: "pnpm"
 
