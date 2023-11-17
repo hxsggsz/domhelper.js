@@ -17,6 +17,19 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "author": {
+    "name": "Victor Hugo hxsggsz",
+    "url": "https://www.linkedin.com/in/hxsggsz/"
+  },
+  "description": "wrapper to manipulate DOM elements for javascript and typescript build with typescript",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hxsggsz/domhelper.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hxsggsz/domhelper.js/issues"
+  },
+  "homepage": "https://github.com/hxsggsz/domhelper.js#readme",
   "keywords": [
     "DOM",
     "javascript",
