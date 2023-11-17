@@ -1,57 +1,33 @@
-type AllElementsTypes = "one" | "all";
-type ElementType<T extends HTMLElement> = NodeListOf<T> | T | null;
+import { ElementType } from "./domhelper.types";
 
 export class Select<T extends HTMLElement> {
   private classOrId: string;
   private valueToGet: string;
-  private allElements: AllElementsTypes;
   private element: ElementType<T>;
 
-  constructor(
-    html?: keyof HTMLElementTagNameMap,
-    allElements?: AllElementsTypes
-  ) {
+  constructor(html?: keyof HTMLElementTagNameMap) {
+    this.element = null;
     this.classOrId = "";
-    this.allElements = allElements ?? "one";
-    this.element =
-      allElements === "one"
-        ? document.querySelector<T>(html ?? "*")
-        : document.querySelectorAll<T>(html ?? "*");
-    this.valueToGet = "";
+    this.valueToGet = html ?? "";
   }
 
   where(classOrId: "id" | "class"): this {
-    this.classOrId = classOrId;
+    this.classOrId = `${classOrId === "class" ? "." : "#"}`;
     return this;
   }
 
-  equals(valueToGet: string) {
-    this.valueToGet = valueToGet;
-    this.element = document.querySelector<T>(
-      `${this.classOrId === "class" ? `.${valueToGet}` : `#${valueToGet}`}`
-    );
-
+  equals(valueToGet: string): this {
+    this.valueToGet = `${this.classOrId}${valueToGet}`;
     return this;
   }
 
-  all() {
-    this.allElements = "all";
-    this.element = document.querySelectorAll<T>(
-      `${
-        this.classOrId === "class"
-          ? `.${this.valueToGet}`
-          : `#${this.valueToGet}`
-      }`
-    );
-
-    return this;
-  }
-
-  getResult() {
+  getResult(): T {
+    this.element = document.querySelector<T>(this.valueToGet);
     return this.element as T;
   }
 
-  getAllResults() {
+  getAllResults(): NodeListOf<T> {
+    this.element = document.querySelectorAll<T>(this.valueToGet);
     return this.element as NodeListOf<T>;
   }
 }

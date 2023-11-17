@@ -4,5 +4,5 @@ const testClass = new Select()
   .getResult()
   
 if(testClass) {
-  testClass.innerHTML = 'worked'
+  testClass.innerHTML = 'worked import'
 }

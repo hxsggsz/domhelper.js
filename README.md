@@ -20,6 +20,8 @@ use directly on HTML
 const test = new Select().where("id").equals("test").getResult()
 ```
 
+you can see more examples [here](https://github.com/hxsggsz/domhelper.js/blob/master/EXAMPLES.md)
+
 ## Troubleshooting
 if you face wit this error on console
 

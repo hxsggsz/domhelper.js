@@ -10,12 +10,17 @@
     <div class="test-import">test</div>
     <div class="test-multiple-elements">test</div>
     <div class="test-multiple-elements">test</div>
-
+    <h1>test</h1>
+    <button>
+      click me
+    </button>
     <script>
-    const exports = {} // remove error on console
+      const exports = {} // remove error on console
     </script>
     <script
-      src="https://cdn.jsdelivr.net/npm/domhelper.js@0.1.0/dist/domhelper.js"></script>
+      src="../../dist/domhelper.js"></script>
+    <!-- <script
+      src="https://cdn.jsdelivr.net/npm/domhelper.js@latest/dist/domhelper.js"></script> -->
     <script src="./imports.js"></script>
     <script src="./multiples.js"></script>
 
@@ -23,7 +28,18 @@
       const testID = new Select().where("id").equals("test-inline").getResult()
 
       if(testID) {
-        testID.innerHTML = 'worked'
+        testID.innerHTML = 'worked inline'
+      }
+
+      const getHtml = new Select("h1").getResult()
+
+      if(getHtml) {
+        getHtml.innerHTML = "getting html"
+      }
+      const button = new Select("button").getResult()
+
+      if(button) {
+        button.addEventListener("click", () => alert("clicked!"))
       }
     </script>
   </body>
