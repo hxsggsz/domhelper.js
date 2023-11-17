@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  domhelper.js:
+    specifier: ^0.1.0
+    version: 0.1.0
+
 devDependencies:
   '@changesets/cli':
     specifier: ^2.26.2
@@ -1126,6 +1131,10 @@ packages:
     dependencies:
       esutils: 2.0.3
     dev: true
+
+  /domhelper.js@0.1.0:
+    resolution: {integrity: sha512-o2A38qI0Xek2GDHzItaqURNW0Qw8ooJUBvdNGLRdJqp1OvT6cSMBJg3Xm4vesKFAB26zI4wzEGF5AXy7Q8KyzA==}
+    dev: false
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}

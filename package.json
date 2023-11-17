@@ -31,5 +31,8 @@
     "eslint": "^8.53.0",
     "tsup": "^6.7.0",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "domhelper.js": "^0.1.0"
   }
 }
