@@ -1,7 +1,7 @@
 {
   "name": "domhelper.js",
   "license": "MIT",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/domhelper.js",
   "module": "dist/domhelper.mjs",
   "types": "dist/domhelper.d.ts",

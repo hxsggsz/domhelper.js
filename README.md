@@ -4,13 +4,7 @@ domhelper.js is a typescript and javascript library for dealing with DOM.
 
 ## Installation
 
-use directly on HTML
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/domhelper.js@latest/dist/domhelper.js"></script>
-```
-
-## Usage
+### use directly on HTML
 
 ```js
 // HTML
@@ -18,6 +12,22 @@ use directly on HTML
 
 // js
 const test = new Select().where("id").equals("test").getResult()
+```
+
+or
+
+### use modules
+
+```bash
+npm install domhelper.js
+yarn add domhelper.js
+pnpm add domhelper.js
+```
+
+```js
+import { Select } from "domhelper.js"
+
+const counter = new Select().where("id").equals("app").getResult()
 ```
 
 you can see more examples [here](https://github.com/hxsggsz/domhelper.js/blob/master/EXAMPLES.md)
